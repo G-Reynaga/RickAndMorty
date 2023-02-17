@@ -1,0 +1,19 @@
+.search{
+    padding: 10px;
+}
+.search input{
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    outline: none;
+}
+.search button{
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    background-color: #703bd8;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+.search button:active{
+    opacity: 0.8;
+}
