@@ -16,8 +16,8 @@ function App() {
   const [characters, setCharacters] = useState([]);
   const [access, setAccess] = useState(false);
 
-  const username = "1";
-  const password = "1";
+  const username = "";
+  const password = "";
 
   const login = (userData) => {
     if (userData.username === username && userData.password === password) {
@@ -32,7 +32,7 @@ function App() {
 
   const onSearch = (character) => {
     // hacer busqueda
-    fetch(`http://localhost:3001/rickandmorty/onsearch/${character}`)
+    fetch(`http://localhost:3001/rickandmorty/character/${character}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.name) {

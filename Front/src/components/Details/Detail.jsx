@@ -43,7 +43,7 @@ function Detail() {
             <h2>Estado: {character.status}</h2>
             <h2>Especie: {character.species}</h2>
             <h2>Genero: {character.gender}</h2>
-            <h2>Origen: {character?.origin?.name}</h2>
+            <h2>Origen: {character?.origin}</h2>
           </div>
           <div>
             <div className={styles.btn}>

@@ -1,18 +1,15 @@
-const http = require('http')    
-const getCharById = require('../Controllers/getCharById')
-const getCharDetail = require('../Controllers/getCharDetail')
+const express = require("express");
+const server = express();
+const router = require('./index') 
+const cors = require('cors')
+const morgan = require('morgan')
 
-http.createServer((req,res)=>{
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    
-    let id = req.url.split('/').at(-1)
+// MiddleWares
+server.use(cors())
+server.use(express.json());
+server.use(morgan('dev'))
 
-    if(req.url.includes('onsearch')){
-        getCharById(res,id)
-    }
-    if(req.url.includes('detail')){
-        getCharDetail(res,id)
+//Routing
+server.use('/rickandmorty', router)
 
-    }
-    
-}).listen(3001, 'localhost')
+module.exports = server
