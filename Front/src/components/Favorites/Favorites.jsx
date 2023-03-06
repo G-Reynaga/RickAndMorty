@@ -38,7 +38,7 @@ const Favorites = () => {
       </div>
       {myFavorites.map((character) => {
         return (
-          <div key={character.id} className={styles.container}>
+          <div className={styles.container}>
             <div className={styles.card}>
               <Link to={`/detail/${character.id}`}>
                 <img src={character.image} alt={character.name} />

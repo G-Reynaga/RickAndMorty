@@ -37,7 +37,7 @@
   text-align: center;
 }
 .card img {
-  display: block;
+  display: grid;
   margin: auto;
   width: 200px;
   border-radius: 20px;
