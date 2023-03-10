@@ -11,8 +11,15 @@ router.get("/detail/:detailId", getCharDetail);
 
 //Favoritos
 router.post("/fav", (req, res) => {
-  fav.push(req.body);
-  res.status(200).send("Se guardaron Correctamente los datos favoritos");
+  const character = req.body;
+  const characterExists = fav.some((favCharacter) => favCharacter.id === character.id);
+  
+  if (!characterExists) {
+    fav.push(character);
+    res.status(200).send("Se guardaron correctamente los datos favoritos");
+  } else {
+    res.status(400).send("El personaje ya existe en la lista de favoritos");
+  }
 });
 
 router.get("/fav", (req, res) => {

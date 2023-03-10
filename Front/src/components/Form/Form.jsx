@@ -1,7 +1,7 @@
 import styles from "./Form.module.css";
-import "animate.css";
 import { useState } from "react";
 import validation from "./validation";
+import "animate.css";
 
 const Form = ({ login }) => {
   const [userData, setUserData] = useState({
@@ -34,35 +34,37 @@ const Form = ({ login }) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.box}>
-        <form className={styles.form} onSubmit={handleSumbit}>
-          <h2>SIGN IN</h2>
-          <div className={styles.inputBox}>
-            <input
-              type="text"
-              name="username"
-              value={userData.username}
-              onChange={handleInputChange}
-              // required
-            />
-            <span>User Name</span>
-            <i></i>
-          </div>
-          {errors.username && <p>{errors.username}</p>}
-          <div className={styles.inputBox}>
-            <input
-              type="password"
-              name="password"
-              value={userData.password}
-              onChange={handleInputChange}
-              // required
-            />
-            <span>Password</span>
-            <i></i>
-          </div>
-          {errors.password && <p>{errors.password}</p>}
-          <input type="submit" value="LOGIN " />
-        </form>
+      <div className="animate__animated animate__zoomIn">
+        <div className={styles.box}>
+          <form className={styles.form} onSubmit={handleSumbit}>
+            <h2>SIGN IN</h2>
+            <div className={styles.inputBox}>
+              <input
+                type="text"
+                name="username"
+                value={userData.username}
+                onChange={handleInputChange}
+                // required
+              />
+              <span>User Name</span>
+              <i></i>
+            </div>
+            {errors.username && <p>{errors.username}</p>}
+            <div className={styles.inputBox}>
+              <input
+                type="password"
+                name="password"
+                value={userData.password}
+                onChange={handleInputChange}
+                // required
+              />
+              <span>Password</span>
+              <i></i>
+            </div>
+            {errors.password && <p>{errors.password}</p>}
+            <input type="submit" value="LOGIN " />
+          </form>
+        </div>
       </div>
     </div>
   );

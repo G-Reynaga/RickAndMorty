@@ -6,18 +6,20 @@ function Nav({ onSearch }) {
   return (
     <div>
       <nav className={styles.navigation}>
-        <Link to="/home" className={styles.link}>
-          Home
-        </Link>
-        <Link to="/favorites" className={styles.link}>
-          Favorites
-        </Link>
-        <Link to="/about" className={styles.link}>
-          About
-        </Link>
-        <Link to="/" className={styles.link}>
-          Log Out
-        </Link>
+        <div>
+          <Link to="/home" className={styles.link}>
+            Home
+          </Link>
+          <Link to="/favorites" className={styles.link}>
+            Favorites
+          </Link>
+          <Link to="/about" className={styles.link}>
+            About
+          </Link>
+          <Link to="/" className={styles.link}>
+            Log Out
+          </Link>
+        </div>
         <div className={styles.search}>
           <SearchBar onSearch={onSearch} />
         </div>

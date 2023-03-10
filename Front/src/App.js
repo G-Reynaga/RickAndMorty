@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Nav from "./components/Nav/Nav";
-import Cards from "./components/Card/Cards";
+import Cards from "./components/Cards/Cards";
 import About from "./components/About/About";
 import Detail from "./components/Details/Detail";
 import Form from "./components/Form/Form";
@@ -35,18 +35,30 @@ function App() {
     fetch(`http://localhost:3001/rickandmorty/character/${character}`)
       .then((response) => response.json())
       .then((data) => {
-        if (data.name) {
-          setCharacters(oldcharacter => [...oldcharacter, data]);
-        } else {
-          // window.alert("No hay personajes con ese ID");
-          Swal.fire({
-            icon: "question",
-            iconColor: "#2DCDDF",
-            title: "El ID que busca no existe",
-            color: "black",
-            confirmButtonColor: "#703bd8",
-          });
+        if (data.id) {
+          // Verificar si el personaje ya está en la lista
+          const index = characters.findIndex((c) => c.id === data.id);
+          if (index === -1) {
+            setCharacters((oldcharacter) => [...oldcharacter, data]);
+          } else {
+            Swal.fire({
+              icon: "info",
+              iconColor: "#2DCDDF",
+              title: "El ID que busca ya esta en la lista",
+              color: "black",
+              confirmButtonColor: "#703bd8",
+            });
+          }
         }
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Por favor colocar un ID existente",
+          color: "black",
+          confirmButtonColor: "#703bd8",
+        });
+        console.error(error);
       });
   };
 
@@ -56,13 +68,9 @@ function App() {
 
   return (
     <div className="App">
-      {location.pathname === "/" ? (
-        <Form login={login} />
-      ) : (
-        <Nav onSearch={onSearch} />
-      )}
+      {location.pathname === "/home" ? <Nav onSearch={onSearch} /> : null}
       <Routes>
-        <Route path="/" element />
+        <Route path="/" element={<Form login={login} />} />
         <Route
           path="/home"
           element={<Cards onClose={onClose} characters={characters} />}

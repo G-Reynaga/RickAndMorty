@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import styles from "./Card.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { addFavorite, deleteFavorite } from "../../redux/actions";
+import styles from "./Card.module.css";
 
 function Card({ name, image, gender, onClose, id }) {
   const dispatch = useDispatch();
@@ -27,17 +27,13 @@ function Card({ name, image, gender, onClose, id }) {
         setIsFav(true);
       }
     });
-  }, [myFavorites,id]);
+  }, [myFavorites, id]);
 
   return (
-    <div className={styles.container}>
+    <div className="animate__animated animate__fadeIn">
       <div className={styles.card}>
         <div className={styles.btn}>
-          {isFav ? (
-            <button onClick={handleFavorite}>❤️</button>
-          ) : (
-            <button onClick={handleFavorite}>🤍</button>
-          )}
+          <button onClick={handleFavorite}>{isFav ? "❤️" : "🤍"}</button>
           <button onClick={onClose}>X</button>
         </div>
         <Link to={`/detail/${id}`}>

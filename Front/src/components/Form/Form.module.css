@@ -20,20 +20,7 @@
     background: #1c1c1c;
     border-radius: 8px;
     overflow: hidden;
-    animation: zoomIn;
-    animation-duration: 1s;
 }
-@keyframes zoomIn {
-    from {
-      opacity: 0;
-      -webkit-transform: scale3d(0.3, 0.3, 0.3);
-      transform: scale3d(0.3, 0.3, 0.3);
-    }
-  
-    50% {
-      opacity: 1;
-    }
-  }
 .box::before{
     content: '';
     z-index: 1;

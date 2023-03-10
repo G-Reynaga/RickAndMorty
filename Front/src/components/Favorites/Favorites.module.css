@@ -1,8 +1,39 @@
+.botones{
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+.select select{
+  font-size: 1.5rem;
+  font-weight:bold ;
+  background-color: #703bd8;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  outline: none;
+  margin-right: .5rem;
+}
+.back{
+  font-weight:bold ;
+  background-color: #703bd8;
+  color: white;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  padding: 5px;
+  cursor: pointer;
+  border: none;
+}
+.back:active{
+  opacity: 0.8 ;
+}
 .container {
-  display: inline-block;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  place-items: center;
 }
 .card {
-  padding: 10px;
+  padding: 15px;
   margin: 20px;
   border-radius: 15px;
   background: rgba(0, 0, 0, 0.2);
@@ -15,13 +46,45 @@
     inset 10px 6px 10px rgba(0, 0, 0, 0.25);
   transform: scale(1.05);
 }
+.btn{
+  display: flex;
+  justify-content: space-between;
+}
+.btn button  {
+  cursor: pointer;
+  background-color: #703bd8;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  border: none;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 5px;
+}
+.btn button:active{
+  opacity: 0.8;
+}
 .card h2 {
   color: rgb(255, 255, 255);
   text-align: center;
+  user-select: none;
 }
 .card img {
-  display: block;
+  display: grid;
   margin: auto;
   width: 200px;
   border-radius: 20px;
+}
+
+@media (max-width: 600px){
+  .select{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+  .select select{
+    font-size: 18px;
+  }
+  .back{
+    font-size: 18px;
+  }
 }

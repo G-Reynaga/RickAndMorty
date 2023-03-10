@@ -35,7 +35,7 @@ function Detail() {
   }, [detailId]);
 
   return (
-    <div>
+    <div className="animate__animated animate__fadeIn">
       <div className={styles.container}>
         <div className={styles.datos}>
           <div className={styles.detalles}>
