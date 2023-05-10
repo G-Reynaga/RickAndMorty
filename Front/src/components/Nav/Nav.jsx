@@ -10,9 +10,9 @@ function Nav({ onSearch }) {
           <Link to="/home" className={styles.link}>
             Home
           </Link>
-          <Link to="/favorites" className={styles.link}>
+          {/* <Link to="/favorites" className={styles.link}>
             Favorites
-          </Link>
+          </Link> */}
           <Link to="/about" className={styles.link}>
             About
           </Link>

@@ -1,20 +1,35 @@
 import Card from "../Card/Card";
-import styles from './Cards.module.css'
+import styles from "./Cards.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getChar } from "../../redux/actions";
 
-function Cards({ characters, onClose }) {
+function Cards() {
+  const chars = useSelector((state) => state.characters);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getChar());
+  }, [dispatch]);
+
   return (
-    <div className={styles.container}>
-      {characters.map(({ id, name, species, gender, image }) => (
-        <Card
-          key={id}
-          id={id}
-          name={name}
-          species={species}
-          gender={gender}
-          image={image}
-          onClose={() => onClose(id)}
-        />
-      ))}
+    <div>
+      <div className={styles.container}>
+        {chars.map((char, index) => {
+          return (
+            <Card
+              key={char.id}
+              id={char.id}
+              name={char.name}
+              image={char.image}
+              species={char.species}
+              gender={char.gender}
+              status={char.status}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

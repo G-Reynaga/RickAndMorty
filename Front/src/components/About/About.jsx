@@ -8,18 +8,17 @@ function About() {
     <div className="animate__animated animate__fadeIn">
       <div className={styles.container}>
         <div className={styles.datos}>
+          <div className={styles.btn}>
+            <button onClick={() => navigate("/home")}>Back to</button>
+          </div>
           <div className={styles.detalles}>
             <h1>Hola soy Gerson Reynaga</h1>
             <p>
               Soy un programador Full Stack con aprendizaje constante y pasión
-              por la programación. Tengo 27 años me gusta pasar tiempo al frente
-              de la computadora al estar codeando o bien jugar videojuegos
+              por la programación.
             </p>
           </div>
           <div>
-            <div className={styles.btn}>
-              <button onClick={() => navigate("/home")}>Regresar</button>
-            </div>
             <div className={styles.img}>
               <img src={foto} alt={foto} />
             </div>

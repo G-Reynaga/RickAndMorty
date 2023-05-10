@@ -1,0 +1,31 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(1fr));
+}
+
+.pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+.pages button {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: #703bd8;
+  color: white;
+  cursor: pointer;
+}
+.pages h3{
+    color: white;
+    margin: 1rem;
+    background-color: #703bd8 ;
+    padding: 0 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.pages button:active {
+  opacity: 0.8;
+}

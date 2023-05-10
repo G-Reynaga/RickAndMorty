@@ -7,7 +7,8 @@
     min-height: 100vh;
 }
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 0;
+    height: 0;
     background-color: rgb(152, 181, 193);
 }
 

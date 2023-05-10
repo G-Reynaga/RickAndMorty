@@ -1,3 +1,8 @@
+@font-face {
+  font-family: Get Schwifty;
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/3089507/get-schwifty.woff")
+    format("woff");
+}
 .container {
   display: grid;
   place-items: center;
@@ -6,8 +11,6 @@
 .datos {
   position: relative;
   padding: 20px;
-  width: 1400px;
-  height: 720px;
   border-radius: 8px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -26,6 +29,11 @@
   text-align: center;
   font-size: 24px;
 }
+.datos .detalles h1 {
+  font-family: Get Schwifty;
+  color: aqua;
+  font-size: 4rem;
+}
 .img {
   display: flex;
   justify-content: center;
@@ -36,12 +44,13 @@
   border-radius: 20px;
   transition: all 0.5s;
   margin: 20px;
+  box-shadow: 10px 16px 10px rgba(0, 0, 0, 0.4);
 }
 
 .datos img:hover {
   box-shadow: 20px 26px 10px rgba(0, 0, 0, 0.4),
     inset 10px 6px 10px rgba(0, 0, 0, 0.25);
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .btn {
@@ -63,4 +72,36 @@
 
 .btn button:active {
   opacity: 0.8;
+}
+
+.alive {
+  background-color: green;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  font-weight: bold;
+}
+
+.dead {
+  background-color: red;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  font-weight: bold;
+}
+
+.unknown {
+  background-color: gray;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 481px) and (max-width: 1024px) {
+  /* Estilos para tabletas */
+  .datos {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .datos img {
+    width: 300px;
+  }
 }

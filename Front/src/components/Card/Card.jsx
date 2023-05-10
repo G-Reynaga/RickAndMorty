@@ -1,45 +1,32 @@
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-import { addFavorite, deleteFavorite } from "../../redux/actions";
 import styles from "./Card.module.css";
 
-function Card({ name, image, gender, onClose, id }) {
-  const dispatch = useDispatch();
 
-  const myFavorites = useSelector((state) => state.myFavorites);
-
-  const [isFav, setIsFav] = useState(false);
-
-  const handleFavorite = () => {
-    if (isFav) {
-      setIsFav(false);
-      dispatch(deleteFavorite(id));
-    } else {
-      setIsFav(true);
-      dispatch(addFavorite({ name, image, gender, onClose, id }));
-    }
-  };
-
-  useEffect(() => {
-    myFavorites.forEach((fav) => {
-      if (fav.id === id) {
-        setIsFav(true);
-      }
-    });
-  }, [myFavorites, id]);
-
+function Card({ name, image, status, id }) {
   return (
-    <div className="animate__animated animate__fadeIn">
-      <div className={styles.card}>
-        <div className={styles.btn}>
-          <button onClick={handleFavorite}>{isFav ? "❤️" : "🤍"}</button>
-          <button onClick={onClose}>X</button>
+    <div>
+      <div className="animate__animated animate__fadeIn">
+        <div className={styles.card}>
+          <div className={styles.btn}>
+            {/* <button onClick={handleFavorite}>{isFav ? "❤️" : "🤍"}</button> */}
+            {/* <button onClick={onClose}>X</button> */}
+          </div>
+          <Link to={`/detail/${id}`}>
+            <img src={image} alt={name} />
+          </Link>
+          <h3>{name}</h3>
+          <span
+            className={
+              status === "Alive"
+                ? styles.alive
+                : status === "Dead"
+                ? styles.dead
+                : styles.unknown
+            }
+          >
+            {status}
+          </span>
         </div>
-        <Link to={`/detail/${id}`}>
-          <img src={image} alt={name} />
-        </Link>
-        <h2>{name}</h2>
       </div>
     </div>
   );

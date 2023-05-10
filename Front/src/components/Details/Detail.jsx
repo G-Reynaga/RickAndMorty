@@ -4,12 +4,12 @@ import Swal from "sweetalert2";
 import styles from "./Detail.module.css";
 
 function Detail() {
-  const { detailId } = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
   const [character, setCharacter] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:3001/rickandmorty/detail/${detailId}`)
+    fetch(`http://localhost:3001/rickandmorty/${id}`)
       .then((response) => response.json())
       .then((char) => {
         if (char.name) {
@@ -32,24 +32,34 @@ function Detail() {
         });
       });
     return setCharacter({});
-  }, [detailId]);
+  }, [id]);
 
   return (
     <div className="animate__animated animate__fadeIn">
       <div className={styles.container}>
         <div className={styles.datos}>
           <div className={styles.detalles}>
-            <h1>Nombre: {character.name}</h1>
-            <h2>Estado: {character.status}</h2>
-            <h2>Especie: {character.species}</h2>
-            <h2>Genero: {character.gender}</h2>
-            <h2>Origen: {character?.origin}</h2>
+            <h1>{character.name}</h1>
+            <h2>{character.species}</h2>
+            <h2>{character.gender}</h2>
+            <h2>{character?.origin}</h2>
+            <h2
+              className={
+                character.status === "Alive"
+                  ? styles.alive
+                  : character.status === "Dead"
+                  ? styles.dead
+                  : styles.unknown
+              }
+            >
+              {character.status}
+            </h2>
           </div>
-          <div>
-            <div className={styles.btn}>
-              <button onClick={() => navigate("/home")}>Regresar</button>
-            </div>
-            <div className={styles.img}>
+          <div className={styles.img}>
+            <div>
+              <div className={styles.btn}>
+                <button onClick={() => navigate("/home")}>Back to</button>
+              </div>
               <img src={character.image} alt={character.name} />
             </div>
           </div>

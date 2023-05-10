@@ -2,44 +2,62 @@
   padding: 15px;
   margin: 20px;
   border-radius: 15px;
-  background: rgba(0, 0, 0, 0.2);
-  box-shadow: 10px 6px 10px rgba(0, 0, 0, 0.25),
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 10px 6px 10px rgba(0, 0, 0, 0.5),
     inset 10px 6px 10px rgba(0, 0, 0, 0.25);
   transition: all 0.5s;
 }
 .card:hover {
   box-shadow: 20px 26px 10px rgba(0, 0, 0, 0.4),
     inset 10px 6px 10px rgba(0, 0, 0, 0.25);
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
-.card link{
+.card link {
   -webkit-user-drag: none;
 }
-.btn{
+.btn {
   display: flex;
   justify-content: space-between;
 }
-.btn button  {
+.btn button {
   cursor: pointer;
   background-color: #703bd8;
   color: rgb(255, 255, 255);
-  font-weight: bold;
   border: none;
-  padding: 5px;
+  padding: 8px;
   margin: 10px;
   border-radius: 5px;
 }
-.btn button:active{
+.btn button:active {
   opacity: 0.8;
 }
-.card h2 {
+.card h3 {
   color: rgb(255, 255, 255);
   text-align: center;
   user-select: none;
+  margin-bottom: 0.5rem;
 }
 .card img {
   display: grid;
   margin: auto;
   width: 200px;
   border-radius: 20px;
+}
+.card span {
+  color: white;
+  border-radius: .5rem;
+  padding: 0.3rem;
+  font-weight: bold;
+}
+
+.alive {
+  background-color: green;
+}
+
+.dead {
+  background-color: red;
+}
+
+.unknown {
+  background-color: gray;
 }

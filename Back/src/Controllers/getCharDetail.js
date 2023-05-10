@@ -1,11 +1,11 @@
 const axios = require("axios");
+const { URL_CHARACTER_ID } = require("../utils/globalConst");
 
 const getCharDetail = async (req, res) => {
   try {
-    const { detailId } = req.params;
-    const responde = (
-      await axios(`https://rickandmortyapi.com/api/character/${detailId}`)
-    ).data;
+    const { id } = req.params;
+    let url = URL_CHARACTER_ID;
+    const responde = (await axios(`${url}${id}`)).data;
     const infoCharDetail = {
       name: responde.name,
       status: responde.status,

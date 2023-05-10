@@ -1,6 +1,7 @@
 import styles from "./Form.module.css";
 import { useState } from "react";
 import validation from "./validation";
+import Swal from "sweetalert2";
 import "animate.css";
 
 const Form = ({ login }) => {
@@ -9,27 +10,43 @@ const Form = ({ login }) => {
     password: "",
   });
 
-  const [errors, setErrors] = useState({
-    username: "",
-    password: "",
-  });
+  const [errors, setErrors] = useState({});
 
   const handleInputChange = (event) => {
     setUserData({
       ...userData,
       [event.target.name]: event.target.value,
     });
-    setErrors(
-      validation({
+    setErrors((prevState) => ({
+      ...prevState,
+      [event.target.name]: validation({
         ...userData,
         [event.target.name]: event.target.value,
-      })
-    );
+      })[event.target.name],
+    }));
   };
+
+  // const handleSumbit = (event) => {
+  //   event.preventDefault();
+  //   login(userData);
+  // };
 
   const handleSumbit = (event) => {
     event.preventDefault();
-    login(userData);
+    if (Object.keys(errors).length === 0) {
+      // Si hay errores, mostrar alerta
+      Swal.fire({
+        icon: "error",
+        text: "Please complete all fields correctly",
+      });
+    } else {
+      // Si no hay errores, continuar con el proceso
+      Swal.fire({
+        icon: "success",
+        title: "Welcome",
+      });
+      login(userData);
+    }
   };
 
   return (

@@ -1,5 +1,4 @@
 import "./App.css";
-import Swal from "sweetalert2";
 import { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -9,15 +8,15 @@ import About from "./components/About/About";
 import Detail from "./components/Details/Detail";
 import Form from "./components/Form/Form";
 import Favorites from "./components/Favorites/Favorites";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [characters, setCharacters] = useState([]);
   const [access, setAccess] = useState(false);
 
-  const username = "";
-  const password = "";
+  const username = "gerson@gmail.com";
+  const password = "123456";
 
   const login = (userData) => {
     if (userData.username === username && userData.password === password) {
@@ -30,55 +29,18 @@ function App() {
     !access && navigate("/");
   }, [access, navigate]);
 
-  const onSearch = (character) => {
-    // hacer busqueda
-    fetch(`http://localhost:3001/rickandmorty/character/${character}`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.id) {
-          // Verificar si el personaje ya está en la lista
-          const index = characters.findIndex((c) => c.id === data.id);
-          if (index === -1) {
-            setCharacters((oldcharacter) => [...oldcharacter, data]);
-          } else {
-            Swal.fire({
-              icon: "info",
-              iconColor: "#2DCDDF",
-              title: "El ID que busca ya esta en la lista",
-              color: "black",
-              confirmButtonColor: "#703bd8",
-            });
-          }
-        }
-      })
-      .catch((error) => {
-        Swal.fire({
-          icon: "error",
-          title: "Por favor colocar un ID existente",
-          color: "black",
-          confirmButtonColor: "#703bd8",
-        });
-        console.error(error);
-      });
-  };
-
-  const onClose = (id) => {
-    setCharacters(characters.filter((character) => character.id !== id));
-  };
-
   return (
     <div className="App">
-      {location.pathname === "/home" ? <Nav onSearch={onSearch} /> : null}
+      {location.pathname === "/home" ? <Nav /> : null}
       <Routes>
         <Route path="/" element={<Form login={login} />} />
-        <Route
-          path="/home"
-          element={<Cards onClose={onClose} characters={characters} />}
-        />
+        <Route path="/home" element={<Cards />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/about" element={<About />} />
-        <Route path="/detail/:detailId" element={<Detail />} />
+        <Route path="/detail/:id" element={<Detail />} />
       </Routes>
+      {/* permite que solo se vea Home y en las demas pag no se visualice */}
+      {location.pathname === "/home" ? <Footer /> : null}
     </div>
   );
 }
